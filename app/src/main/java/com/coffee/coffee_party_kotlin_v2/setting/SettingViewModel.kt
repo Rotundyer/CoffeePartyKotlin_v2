@@ -1,11 +1,11 @@
 package com.coffee.coffee_party_kotlin_v2.setting
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.coffee.coffee_party_kotlin_v2.metods.api.Types
 
 class SettingViewModel : ViewModel() {
-
     private val repository = SettingRepository()
 
     private val URL: String = "http:/testapi.servertest.pro/api/"

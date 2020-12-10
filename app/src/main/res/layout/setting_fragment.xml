@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/Brown_900"
-    android:orientation="vertical"
-    android:padding="4dp"
-    tools:context=".setting.SettingFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_margin="20dp">
+        android:layout_height="match_parent"
+        android:background="@color/Brown_900"
+        android:orientation="vertical"
+        android:padding="4dp">
 
-        <Button
-            android:id="@+id/types_dialog"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_margin="40dp"
-            android:text="Dialog"
-            android:textSize="40dp" />
-    </LinearLayout>
+            android:layout_height="150dp"
+            android:layout_margin="20dp">
 
-</LinearLayout>
+            <Button
+                android:id="@+id/types_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="40dp"
+                android:background="@color/Brown_300"
+                android:text="next"
+                android:textSize="40dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
