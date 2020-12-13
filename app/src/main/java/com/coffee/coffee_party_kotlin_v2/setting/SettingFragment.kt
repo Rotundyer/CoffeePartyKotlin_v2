@@ -7,10 +7,13 @@ import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.coffee.coffee_party_kotlin_v2.R
 import com.coffee.coffee_party_kotlin_v2.databinding.SettingFragmentBinding
@@ -28,6 +31,7 @@ class SettingFragment : Fragment() {
 
     private lateinit var viewModels: SettingViewModel
     private var types: List<Types.Result>? = null
+    lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,7 +72,16 @@ class SettingFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-
+                navController = view.let { Navigation.findNavController(it!!) }
+                navController.navigate(
+                    R.id.gettingFragment,
+                    bundleOf(
+                        "title" to arguments?.getString("title"),
+                        "image" to arguments?.getString("image"),
+                        "size" to types_dialog.text.toString(),
+                        "sugar" to sugar_dialog.text.toString()
+                    )
+                )
             }
         }
 
@@ -119,7 +132,7 @@ class SettingFragment : Fragment() {
                     dialogView.seekbar_text.text =
                         seekbar.progress.toString() + when (seekbar.progress) {
                             1 -> " кубик сараха"
-                            2, 3, 4 -> " кубака сахара"
+                            2, 3, 4 -> " кубика сахара"
                             else -> " кубиков сахара"
                         }
                     sugar_dialog.text = seekbar.progress.toString()
