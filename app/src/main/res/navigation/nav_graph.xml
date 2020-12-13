@@ -18,5 +18,18 @@
         android:id="@+id/settingFragment"
         android:name="com.coffee.coffee_party_kotlin_v2.setting.SettingFragment"
         android:label="setting_fragment"
-        tools:layout="@layout/setting_fragment" />
+        tools:layout="@layout/setting_fragment" >
+        <action
+            android:id="@+id/action_settingFragment_to_gettingFragment"
+            app:destination="@id/gettingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gettingFragment"
+        android:name="com.coffee.coffee_party_kotlin_v2.getting.GettingFragment"
+        android:label="getting_fragment"
+        tools:layout="@layout/getting_fragment" >
+        <action
+            android:id="@+id/action_gettingFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
 </navigation>

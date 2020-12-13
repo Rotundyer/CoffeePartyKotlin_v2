@@ -6,6 +6,11 @@ import androidx.lifecycle.ViewModel
 import com.coffee.coffee_party_kotlin_v2.metods.api.Types
 
 class SettingViewModel : ViewModel() {
+    val size = "Размер кружки"
+    val button = "Кликните"
+    val sugar = "Сахар"
+    val next = " Далее"
+
     private val repository = SettingRepository()
 
     private val URL: String = "http:/testapi.servertest.pro/api/"

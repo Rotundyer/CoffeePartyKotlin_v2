@@ -4,15 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/types_billet"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:layout_margin="5dp"
+    android:background="@drawable/background_light_zero">
 
     <TextView
         android:id="@+id/types_button_dialog"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_margin="5dp"
         android:text="50 мл."
         android:textSize="30dp"
+        android:textColor="@color/Brown_200"
+        android:gravity="center"
         android:layout_gravity="center"/>
 
 </LinearLayout>
