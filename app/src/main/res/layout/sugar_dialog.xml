@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center|top"
+    android:background="@drawable/background_light">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Сахар"
+        android:textSize="40dp"
+        android:textColor="@color/Brown_900"
+        android:gravity="center"
+        android:fontFamily="@font/open_sans_extrabold"/>
+
+    <TextView
+        android:id="@+id/seekbar_text"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Выбирите количество сахара"
+        android:textSize="20dp"
+        android:textColor="@color/Brown_900"
+        android:gravity="center"
+        android:fontFamily="@font/open_sans_semibold"/>
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:progress="5"
+        android:max="10"
+        android:theme="@style/SeekBarColor"/>
+
+</LinearLayout>

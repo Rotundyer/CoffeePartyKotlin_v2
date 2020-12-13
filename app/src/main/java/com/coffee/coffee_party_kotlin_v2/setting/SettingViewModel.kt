@@ -9,6 +9,7 @@ class SettingViewModel : ViewModel() {
     val size = "Размер кружки"
     val button = "Кликните"
     val sugar = "Сахар"
+    val next = " Далее"
 
     private val repository = SettingRepository()
 
