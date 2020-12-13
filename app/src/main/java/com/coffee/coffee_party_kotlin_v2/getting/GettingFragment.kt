@@ -13,6 +13,8 @@ import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.coffee.coffee_party_kotlin_v2.R
 import com.coffee.coffee_party_kotlin_v2.metods.database.AppDatabase
+import com.coffee.coffee_party_kotlin_v2.metods.database.CoffeeBase
+import com.coffee.coffee_party_kotlin_v2.metods.database.CoffeeDao
 import kotlinx.android.synthetic.main.getting_fragment.*
 
 class GettingFragment : Fragment() {
@@ -57,7 +59,17 @@ class GettingFragment : Fragment() {
                 .into(getting_image)
         }
         getting_next.setOnClickListener {
-            database = context.let { AppDatabase.getInstance(it) }
+            Thread {
+                database = context.let { AppDatabase.getInstance(it) }
+                val dao: CoffeeDao = database.dao()
+                val into = CoffeeBase(
+                    arguments?.getString("title")!!,
+                    arguments?.getString("image")!!,
+                    arguments?.getString("size")!!,
+                    arguments?.getString("sugar")!!.toInt()
+                )
+                dao.insert(into)
+            }
 
             navController = view.let { Navigation.findNavController(it!!) }
             navController.navigate(R.id.menuFragment)
