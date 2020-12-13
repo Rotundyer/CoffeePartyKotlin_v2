@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.coffee.coffee_party_kotlin_v2.R
+import com.coffee.coffee_party_kotlin_v2.databinding.SettingFragmentBinding
 import com.coffee.coffee_party_kotlin_v2.metods.OnItemClickListener
 import com.coffee.coffee_party_kotlin_v2.metods.addOnItemClickListener
 import com.coffee.coffee_party_kotlin_v2.metods.api.Types
@@ -26,13 +28,15 @@ class SettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.setting_fragment, container, false)
-        return view
+        viewModels = ViewModelProvider(this).get(SettingViewModel::class.java)
+        val binding: SettingFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.setting_fragment, container, false)
+        return binding.apply {
+            this.viewModel = viewModels
+        }.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModels = ViewModelProvider(this).get(SettingViewModel::class.java)
         (activity as AppCompatActivity).supportActionBar?.apply {
             title = arguments?.getString("title")
             setDisplayHomeAsUpEnabled(true)
@@ -69,6 +73,10 @@ class SettingFragment : Fragment() {
             dialogView.setOnClickListener {
                 dialog.dismiss()
             }
+        }
+
+        sugar_dialog.setOnClickListener {
+
         }
 
     }
