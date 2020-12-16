@@ -8,6 +8,8 @@ import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +24,7 @@ class MenuFragment : Fragment() {
 
     private var bool: Boolean = true
     private lateinit var viewModel: MenuViewModel
+    lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +42,7 @@ class MenuFragment : Fragment() {
             title = "CoffeeParty"
             setDisplayHomeAsUpEnabled(false)
         }
+        setHasOptionsMenu(true)
 
         recycler_list.layoutManager = GridLayoutManager(
             context,
@@ -94,5 +98,20 @@ class MenuFragment : Fragment() {
             }
         }
         timer.start()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_history -> {
+                navController = view.let { Navigation.findNavController(it!!) }
+                navController.navigate(R.id.historyFragment)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
