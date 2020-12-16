@@ -64,12 +64,15 @@ class GettingFragment : Fragment() {
                 val dao: CoffeeDao = database.dao()
                 val into = CoffeeBase(
                     arguments?.getString("title")!!,
-                    arguments?.getString("image")!!,
+                    when(arguments?.getString("image")) {
+                        null -> "null"
+                        else -> arguments?.getString("image")
+                    },
                     arguments?.getString("size")!!,
                     arguments?.getString("sugar")!!.toInt()
                 )
                 dao.insert(into)
-            }
+            }.start()
 
             navController = view.let { Navigation.findNavController(it!!) }
             navController.navigate(R.id.menuFragment)

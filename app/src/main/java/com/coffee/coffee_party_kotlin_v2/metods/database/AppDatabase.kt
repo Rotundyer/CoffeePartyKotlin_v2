@@ -5,15 +5,16 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(version = 1, entities = [CoffeeBase::class])
+@Database(version = 2, entities = [CoffeeBase::class])
 abstract class AppDatabase : RoomDatabase() {
     abstract fun dao(): CoffeeDao
 
     companion object {
         private var INSTANCE: AppDatabase? = null
         fun getInstance(context: Context?): AppDatabase {
-            if(INSTANCE == null) {
-                INSTANCE = Room.databaseBuilder(context!!, AppDatabase::class.java, "coffeeBase").build()
+            if (INSTANCE == null) {
+                INSTANCE = Room.databaseBuilder(context!!, AppDatabase::class.java, "coffeeBase")
+                    .fallbackToDestructiveMigration().build()
             }
             return INSTANCE as AppDatabase
         }
