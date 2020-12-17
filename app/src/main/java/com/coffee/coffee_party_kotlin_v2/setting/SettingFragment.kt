@@ -1,10 +1,8 @@
 package com.coffee.coffee_party_kotlin_v2.setting
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import android.widget.SeekBar
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
@@ -18,11 +16,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.coffee.coffee_party_kotlin_v2.R
 import com.coffee.coffee_party_kotlin_v2.databinding.SettingFragmentBinding
 import com.coffee.coffee_party_kotlin_v2.metods.OnItemClickListener
+import com.coffee.coffee_party_kotlin_v2.metods.Phrases
 import com.coffee.coffee_party_kotlin_v2.metods.addOnItemClickListener
 import com.coffee.coffee_party_kotlin_v2.metods.api.Types
 import com.coffee.coffee_party_kotlin_v2.metods.lists.TypesAdapter
 import kotlinx.android.synthetic.main.setting_fragment.*
-import kotlinx.android.synthetic.main.sugar_dialog.*
 import kotlinx.android.synthetic.main.sugar_dialog.view.*
 import kotlinx.android.synthetic.main.types_dialog.view.*
 
@@ -36,7 +34,7 @@ class SettingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewModels = ViewModelProvider(this).get(SettingViewModel::class.java)
         val binding: SettingFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.setting_fragment, container, false)
@@ -53,25 +51,13 @@ class SettingFragment : Fragment() {
         }
 
         setting_next.setOnClickListener {
-            if ((types_dialog.text == "Кликните") && (sugar_dialog.text == "Кликните")) {
-                Toast.makeText(
+            if (
+                Phrases().toastSetting(
                     context,
-                    "Вы не выбрали размер напитка и количество сахара",
-                    Toast.LENGTH_LONG
-                ).show()
-            } else if ((types_dialog.text != "Кликните") && (sugar_dialog.text == "Кликните")) {
-                Toast.makeText(
-                    context,
-                    "Вы не выбрали количество сахара",
-                    Toast.LENGTH_LONG
-                ).show()
-            } else if ((types_dialog.text == "Кликните") && (sugar_dialog.text != "Кликните")) {
-                Toast.makeText(
-                    context,
-                    "Вы не выбрали размер напитка",
-                    Toast.LENGTH_LONG
-                ).show()
-            } else {
+                    types_dialog.text.toString(),
+                    sugar_dialog.text.toString()
+                )
+            ) {
                 navController = view.let { Navigation.findNavController(it!!) }
                 navController.navigate(
                     R.id.gettingFragment,
@@ -130,11 +116,7 @@ class SettingFragment : Fragment() {
             seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                     dialogView.seekbar_text.text =
-                        seekbar.progress.toString() + when (seekbar.progress) {
-                            1 -> " кубик сараха"
-                            2, 3, 4 -> " кубика сахара"
-                            else -> " кубиков сахара"
-                        }
+                        seekbar.progress.toString() + Phrases().dialogSetting(seekbar.progress)
                     sugar_dialog.text = seekbar.progress.toString()
                 }
 
