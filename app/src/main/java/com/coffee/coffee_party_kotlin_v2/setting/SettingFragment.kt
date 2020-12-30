@@ -111,8 +111,9 @@ class SettingFragment : Fragment() {
 
             dialog.show()
             dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+            sugar_dialog.text = "0"
 
-            var seekbar = dialogView.seekbar
+            val seekbar = dialogView.seekbar
             seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                     dialogView.seekbar_text.text =

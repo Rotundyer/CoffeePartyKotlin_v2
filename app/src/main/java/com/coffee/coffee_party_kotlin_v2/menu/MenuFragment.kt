@@ -3,8 +3,6 @@ package com.coffee.coffee_party_kotlin_v2.menu
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.*
-import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
@@ -15,14 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.coffee.coffee_party_kotlin_v2.R
 import com.coffee.coffee_party_kotlin_v2.metods.lists.CoffeeAdapter
-import com.coffee.coffee_party_kotlin_v2.setting.SettingViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.menu_fragment.*
 
 
 class MenuFragment : Fragment() {
 
-    private var bool: Boolean = true
+    private var timeControl: Boolean = true
     private lateinit var viewModel: MenuViewModel
     lateinit var navController: NavController
 
@@ -70,7 +66,7 @@ class MenuFragment : Fragment() {
                 val totalItemCount = layoutManager!!.itemCount
                 val lastVisible = layoutManager.findLastVisibleItemPosition()
 
-                if ((lastVisible + 1 == totalItemCount) && (totalItemCount < viewModel.getCount()) && bool) { //(totalItemCount - visibleItemCount) <= (lastVisible + visibleItemCount)
+                if ((lastVisible + 1 == totalItemCount) && (totalItemCount < viewModel.getCount()) && timeControl) {
                     viewModel.getCoffeeList(i = true, up = false)
                         .observe(viewLifecycleOwner, Observer {
                             it.let { adapter.refresh(it) }
@@ -90,11 +86,11 @@ class MenuFragment : Fragment() {
     }
 
     fun Timer() {
-        bool = false
+        timeControl = false
         val timer = object : CountDownTimer(100, 100) {
             override fun onTick(millisUntilFinished: Long) {}
             override fun onFinish() {
-                bool = true
+                timeControl = true
             }
         }
         timer.start()

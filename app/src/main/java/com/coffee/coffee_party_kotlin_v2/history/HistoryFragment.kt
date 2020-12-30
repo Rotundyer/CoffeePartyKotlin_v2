@@ -10,10 +10,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.coffee.coffee_party_kotlin_v2.R
-import com.coffee.coffee_party_kotlin_v2.getting.GettingViewModel
 import com.coffee.coffee_party_kotlin_v2.metods.lists.BaseAdapter
 import kotlinx.android.synthetic.main.history_fragment.*
-import kotlinx.android.synthetic.main.menu_fragment.*
 
 class HistoryFragment : Fragment() {
 

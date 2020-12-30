@@ -1,17 +1,17 @@
 package com.coffee.coffee_party_kotlin_v2.setting
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.coffee.coffee_party_kotlin_v2.metods.api.Types
+import com.coffee.coffee_party_kotlin_v2.metods.repositories.apiRepository
 
 class SettingViewModel : ViewModel() {
     val size = "Размер кружки"
-    val button = "Кликните"
+    val button = "?"
     val sugar = "Сахар"
     val next = " Далее"
 
-    private val repository = SettingRepository()
+    private val repository = apiRepository()
 
     private val URL: String = "http:/testapi.servertest.pro/api/"
     private val token = "Token d23d2a771294e285257976bc1e5a4040fa6c14c8"

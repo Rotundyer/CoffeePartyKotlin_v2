@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(version = 2, entities = [CoffeeBase::class])
+@Database(version = 3, entities = [CoffeeBase::class])
 abstract class AppDatabase : RoomDatabase() {
     abstract fun dao(): CoffeeDao
 

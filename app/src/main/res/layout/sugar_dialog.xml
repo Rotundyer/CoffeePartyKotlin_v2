@@ -25,7 +25,7 @@
         android:layout_height="80dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:text="Выбирите количество сахара"
+        android:text="0 кубиков сахара"
         android:textSize="20dp"
         android:textColor="@color/Brown_900"
         android:gravity="center"
@@ -38,7 +38,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        android:progress="5"
+        android:progress="0"
         android:max="10"
         android:theme="@style/SeekBarColor"/>
 
